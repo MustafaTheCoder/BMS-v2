@@ -68,4 +68,25 @@ def withdraw():
         year = current_time.strftime("%Y")
         f.write(f"({day}/{month}/{year}) WITHDRAWAL CASH ${str_withdraw}")
 
+def pay_vat():
+    with open("data/balance.txt", "r") as f:
+        current_balance_ = f.read()
+        current_balance = int(current_balance_)
+        x = 17*current_balance/100
+        x= int(x)
+        new_balance = current_balance-x
+        new_balance_str = str(new_balance)
+        with open("data/balance.txt", "w") as f:
+            f.write(new_balance_str)
+    print(f"YOU PAID ${x} IN SALES TAX!")
+    with open("data/balance.txt", "r") as f:
+        updated_balance = f.read()
+    print(f"CURRENT BALANCE: ${updated_balance}")
 
+
+    with open("data\logs.txt", "w") as f:
+        current_time = datetime.datetime.now()
+        day = current_time.strftime("%d")
+        month = current_time.strftime("%m")
+        year = current_time.strftime("%Y")
+        f.write(f"({day}/{month}/{year}) PAYED VAT!")

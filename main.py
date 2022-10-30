@@ -1,4 +1,4 @@
-from functions import deposit, withdraw
+from functions import deposit, pay_vat, withdraw
 import time
 
 def main():
@@ -11,7 +11,8 @@ def main():
         [2] DEPOSIT BALANCE 
         [3] WITHDRAW BALANCE
         [4] VIEW TRANSACTIONS
-        [5] EXIT
+        [5] PAY VAT
+        [6] EXIT
         """)
         while True:
             time.sleep(.5)
@@ -43,6 +44,8 @@ def main():
                 data = f.read()
                 print(data)
         elif option_chosen == 5:
+            pay_vat()
+        elif option_chosen == 6:
             print("SHUTTING DOWN... 3")
             time.sleep(.5)
             print("SHUTTING DOWN... 2")
